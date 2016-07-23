@@ -29,7 +29,11 @@ public class Tester {
             Dictionery dictionery = new Dictionery();
             dictionery.setStringSequence(inputStrSplittedOnSpace[i]);
             dictionery.setPhoneKey(phoneKeyStrSplittedOnHash[i]);
-            dictionery.setHashString("#");
+            if(i!=inputStrSplittedOnSpace.length-1) {
+                dictionery.setHashString("#");
+            }else {
+                dictionery.setHashString("");
+            }
             dictioneryService.appendZerosToDictioneryPhoneStr(dictionery);
             dictioneryList.add(dictionery);
         }
@@ -60,7 +64,11 @@ public class Tester {
             Dictionery dictionery = new Dictionery();
             dictionery.setStringSequence(inputStrSplittedOnSpace[i]);
             dictionery.setPhoneKey(phoneKeyStrSplittedOnHash[i]);
-            dictionery.setHashString("#");
+            if(i!=inputStrSplittedOnSpace.length-1) {
+                dictionery.setHashString("#");
+            }else {
+                dictionery.setHashString("");
+            }
             dictioneryService.appendZerosToDictioneryPhoneStr(dictionery);
             dictioneryList.add(dictionery);
         }
@@ -96,7 +104,11 @@ public class Tester {
                 Dictionery dictionery = new Dictionery();
                 dictionery.setStringSequence(inputStrSplittedOnSpace[i]);
                 dictionery.setPhoneKey(phoneKeyStrSplittedOnHash[i]);
-                dictionery.setHashString("#");
+                if(i!=inputStrSplittedOnSpace.length-1) {
+                    dictionery.setHashString("#");
+                }else {
+                    dictionery.setHashString("");
+                }
                 dictioneryService.appendZerosToDictioneryPhoneStr(dictionery);
                 dictioneryList.add(dictionery);
             }
