@@ -14,28 +14,29 @@ import java.util.List;
  */
 public class DictioneryDao {
     private static DictioneryDao dictioneryDao=new DictioneryDao();
-    private DictioneryDao getInstance(){
+    public static DictioneryDao getInstance(){
         return dictioneryDao;
     }
 
-    List<String> getStringsForNum(int num){
+    public int getNoOfZerosToAppend(int num,String strSequence){
         List<String> strings=new ArrayList<String>();
         StringBuilder query=new StringBuilder();
         query.append("select string_sequence from dictionary where num_sequence=")
                 .append(num);
+        int countOfZeros=0;
         try (Connection connection = ConnectionUtil.getConnection();
              Statement statement = connection.createStatement();
              ResultSet rs=statement.executeQuery(query.toString())
         ){
 
-            while (rs.next()){
-                String strSequence=rs.getString("string_sequence");
-                strings.add(strSequence);
+            while (rs.next() && !strSequence.equals(rs.getString("string_sequence"))){
+
+                countOfZeros++;
             }
         }catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return strings;
+        return countOfZeros;
     }
 }
