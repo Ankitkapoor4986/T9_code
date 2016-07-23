@@ -22,7 +22,7 @@ public class DictioneryDao {
         List<String> strings=new ArrayList<String>();
         StringBuilder query=new StringBuilder();
         query.append("select string_sequence from dictionary where num_sequence=")
-                .append(num);
+                .append(num).append(" order by id");
         int countOfZeros=0;
         try (Connection connection = ConnectionUtil.getConnection();
              Statement statement = connection.createStatement();
