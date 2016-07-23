@@ -1,4 +1,4 @@
-package com.codathon.t9.Dao;
+package com.codathon.t9.dao;
 
 import com.codathon.t9.util.ConnectionUtil;
 

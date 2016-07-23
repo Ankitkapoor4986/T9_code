@@ -1,8 +1,6 @@
 package com.codathon.t9.service;
 
-import com.codathon.t9.Dao.DictioneryDao;
-
-import java.util.List;
+import com.codathon.t9.dao.DictioneryDao;
 
 /**
  * Created by ankit on 23/7/16.
