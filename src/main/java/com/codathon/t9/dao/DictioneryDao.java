@@ -1,5 +1,6 @@
 package com.codathon.t9.dao;
 
+import com.codathon.t9.Constants;
 import com.codathon.t9.util.ConnectionUtil;
 
 import java.sql.Connection;
@@ -22,7 +23,7 @@ public class DictioneryDao {
         List<String> strings=new ArrayList<String>();
         StringBuilder query=new StringBuilder();
         query.append("select string_sequence from dictionary where num_sequence=")
-                .append(num).append(" order by id");
+                .append(num).append(" order by id limit ").append(Constants.WORDS_LIMIT);
         int countOfZeros=0;
         try (Connection connection = ConnectionUtil.getConnection();
              Statement statement = connection.createStatement();

@@ -7,7 +7,6 @@ import java.util.Map;
  * Created by ankit on 23/7/16.
  */
 public class CharDigitService {
-    private static int ASCII_ZERO = 0x30;
 
     public Map<Character, Integer> getCharDigitMap() {
         Map<Character, Integer> characterIntegerMap = new HashMap<Character, Integer>();
@@ -40,7 +39,16 @@ public class CharDigitService {
         return characterIntegerMap;
     }
 
+    int getDigitsForString(String str) {
 
+        int num = 0;
+        for (int i = 1; i <= str.length(); i++) {
+            char charAt = str.charAt(i - 1);
+            int digit = getCharDigitMap().get(charAt);
+            num = digit * 10 ^ i;
+        }
+        return num;
+    }
 
 
 }
