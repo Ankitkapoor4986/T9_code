@@ -1,6 +1,7 @@
 package com.codathon.t9.dao;
 
 import com.codathon.t9.Constants;
+import com.codathon.t9.model.Dictionery;
 import com.codathon.t9.util.ConnectionUtil;
 
 import java.sql.Connection;
@@ -19,25 +20,25 @@ public class DictioneryDao {
         return dictioneryDao;
     }
 
-    public int getNoOfZerosToAppend(int num,String strSequence){
-        List<String> strings=new ArrayList<String>();
+    public void appendZerosToDictioneryPhoneStr(Dictionery dictionery){
+
         StringBuilder query=new StringBuilder();
         query.append("select string_sequence from dictionary where num_sequence=")
-                .append(num).append(" order by id limit ").append(Constants.WORDS_LIMIT);
-        int countOfZeros=0;
+                .append(dictionery.getPhoneKey()).append(" order by string_sequence limit ").append(Constants.WORDS_LIMIT);
+        StringBuilder countOfZeros=new StringBuilder("");
         try (Connection connection = ConnectionUtil.getConnection();
              Statement statement = connection.createStatement();
              ResultSet rs=statement.executeQuery(query.toString())
         ){
 
-            while (rs.next() && !strSequence.equals(rs.getString("string_sequence"))){
+            while (rs.next() && !dictionery.getStringSequence().equals(rs.getString("string_sequence"))){
 
-                countOfZeros++;
+                countOfZeros.append("0");
             }
         }catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return countOfZeros;
+        dictionery.setPhoneKey(dictionery.getPhoneKey().concat(countOfZeros.toString()));
     }
 }

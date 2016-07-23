@@ -4,15 +4,32 @@ package com.codathon.t9.model;
  * Created by ankit on 23/7/16.
  */
 public class Dictionery {
-    private int digit;
-    private char StringSequence;
+    private String phoneKey;
+    private String StringSequence;
     private long id;
+    private String hashString;
 
-    public char getStringSequence() {
+    public String getHashString() {
+        return hashString;
+    }
+
+    public void setHashString(String hashString) {
+        this.hashString = hashString;
+    }
+
+    public String getPhoneKey() {
+        return phoneKey;
+    }
+
+    public void setPhoneKey(String phoneKey) {
+        this.phoneKey = phoneKey;
+    }
+
+    public String getStringSequence() {
         return StringSequence;
     }
 
-    public void setStringSequence(char stringSequence) {
+    public void setStringSequence(String stringSequence) {
         StringSequence = stringSequence;
     }
 
@@ -25,13 +42,7 @@ public class Dictionery {
     }
 
 
-    public int getDigit() {
-        return digit;
-    }
 
-    public void setDigit(int digit) {
-        this.digit = digit;
-    }
 
 
 }

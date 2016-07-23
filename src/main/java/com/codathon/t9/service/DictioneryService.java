@@ -1,17 +1,25 @@
 package com.codathon.t9.service;
 
 import com.codathon.t9.dao.DictioneryDao;
+import com.codathon.t9.model.Dictionery;
 
 /**
  * Created by ankit on 23/7/16.
  */
 public class DictioneryService {
 
-    DictioneryDao dao=DictioneryDao.getInstance();
+    private DictioneryDao dao=DictioneryDao.getInstance();
+    private static DictioneryService service=new DictioneryService();
 
-    private int getStringsForNum(int num,String strSequence){
-        return dao.getNoOfZerosToAppend( num, strSequence);
+    public void appendZerosToDictioneryPhoneStr(Dictionery dictionery){
+         dao.appendZerosToDictioneryPhoneStr(dictionery);
     }
+
+    public static DictioneryService getInstance(){
+        return service;
+    }
+
+
 
 
 }
